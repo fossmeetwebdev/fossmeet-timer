@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<style> 
+		body{
+			background-color:#ddd;	
+			font-family:roboto;
+		}
+		/*
+		.container{
+			position:absolute;
+			width:1200px;
+			height:400px;
+			padding-left:88px;
+			padding-right:88px;
+			padding-top:100px;
+			padding-bottom:100px;
+			top:50%;
+			left:50%;
+			transform: translateX(-50%) translateY(-50%);
+			text-align:center;
+		}
+		*/
+		.container{
+			position:absolute;
+			width:1900px;
+			height:400px;
+			top:50%;
+			left:50%;
+			transform: translateX(-50%) translateY(-50%);
+			padding-top:100px;
+			padding-bottom:100px;
+
+			display: flex;
+
+			justify-content: space-evenly;
+			align-items:start;
+		}
+		.box1{
+			width:1100px;
+			display:flex;
+			justify-content: space-evenly;
+			align-items:center;
+		}
+
+		.box2{
+			display:flex;
+			width:1100px;
+			justify-content:space-evenly; 
+			align-items:center;
+		}
+		.counter{
+			width:300px;
+			display: flex;
+			flex-direction:column;
+			align-items: center;
+			text-align:justify;
+		}
+		.time{
+			display:flex;
+		}
+		.days,.hours,.minutes,.seconds{
+			width:144px;
+			height:220px;
+			margin:9px;
+			/*
+			paddingj9px;
+			background: rgba(64, 60, 60, 0.75);
+			*/
+			background: #FA8860;
+			border-radius:20px;
+			font-size:90px;
+			font-family:Iosevka;
+			text-align: center;
+			color:black;
+			display: flex;
+			justify-content:center;
+			align-items: center;
+		}
+		.text{
+			font-size:50px;
+			font-family:Iosevka;
+		}
+		.colon{
+			margin-left: -250px;
+			margin-right:-250px;
+			width:24px;
+			font-size:150px;
+			text-align:center;
+		}
+		#info{
+			font-size:90;
+			padding-top:20px;
+		}
+		#gap{
+			width:17px;
+		}
+		p{
+			font-size:90px;
+		}
+		</style>
+	</head>
+	<body>
+		<!--
+		<table class="container">
+			<tr >
+				<td class="days" id="d1">1</td>
+				<td id="gap"></td>
+				<td class="days" id="d2">1</td>
+				<td id="colon">:</td>
+				<td class="hours" id="h1">4</td>
+				<td id="gap"></td>
+				<td class="hours" id="h2">4</td>
+				<td id="colon">:</td>
+				<td class="minutes" id="m1">3</td>
+				<td id="gap"></td>
+				<td class="minutes" id="m2">3</td>
+			</tr>	
+			<tr class="info" >
+				<td id=info  colspan=3>Days</td>
+				<td id=info  colspan=1></td>
+				<td id=info  colspan=3>Hours</td>
+				<td id=info  colspan=1></td>
+				<td id=info  colspan=3>Minutes</td>
+			</tr>
+		</table>
+		--!>
+		<div class=container>
+			<div class=counter>
+				<div class=time>		
+					<div class=days id=d1></div>
+					<div class=days id=d2></div>
+				</div>
+				<div class=text>
+					Days
+				</div>
+			</div>
+				<div class=colon>:</div>
+			<div class=counter>
+				<div class=time>		
+					<div class=hours id=h1></div>	
+					<div class=hours id=h2></div>	
+				</div>
+				<div class=text>
+					Hours	
+				</div>
+			</div>
+				<div class=colon>:</div>
+			<div class=counter>
+				<div class=time>		
+					<div class=minutes id=m1></div>	
+					<div class=minutes id=m2></div>	
+				</div>
+				<div class=text>
+					Minutes	
+				</div>
+			</div>
+				<div class=colon>:</div>
+			<div class=counter>
+				<div class=time>		
+					<div class=seconds id=s1></div>	
+					<div class=seconds id=s2></div>	
+				</div>
+				<div class=text>
+					Seconds	
+				</div>
+			</div>
+		</div>
+	</body>
+
+
+
+	<script>
+	        var countDownDate = new Date("Feb 23, 2023 09:00:00").getTime();
+
+	        // Run myfunc every second
+	        var myfunc = setInterval(function() {
+
+			    var now = new Date().getTime();
+			    var timeleft = countDownDate - now;
+			        
+			    // Calculating the days, hours, minutes and seconds left
+			    var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+			    var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			    var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+			    var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+			        
+			    // Result is output to the specific element
+			    document.getElementById("d1").innerHTML = days>=10?Math.floor(days/10):0;
+			    document.getElementById("d2").innerHTML = days%10;
+			    document.getElementById("h1").innerHTML = hours>=10?Math.floor(hours/10):0;
+			    document.getElementById("h2").innerHTML = hours%10;
+			    document.getElementById("m1").innerHTML = minutes>=10?Math.floor(minutes/10):0;
+			    document.getElementById("m2").innerHTML = minutes%10;
+			    document.getElementById("s1").innerHTML = seconds>=10?Math.floor(seconds/10):0;
+			    document.getElementById("s2").innerHTML = seconds%10;
+
+			
+			    // Display the message when countdown is over
+			    if (timeleft < 0) {
+	            clearInterval(myfunc);
+	            document.getElementById("d1").innerHTML = "0"
+	            document.getElementById("d2").innerHTML = "0"
+	            document.getElementById("h1").innerHTML = "0" 
+	            document.getElementById("h2").innerHTML = "0"
+	            document.getElementById("m1").innerHTML = "0"
+	            document.getElementById("m2").innerHTML = "0"
+	            document.getElementById("info").innerHTML = "yayyyyyyy";
+	        }
+	        }, 1000);
+	</script>
+</html>
